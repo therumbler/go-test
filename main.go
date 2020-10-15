@@ -1,6 +1,13 @@
 package main
-import "fmt"
+import (
+  "fmt"
+  "github.com/valyala/fasthttp"
+)
+
+func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
+  fmt.Fprintf(ctx, "👋 Hi there!  RequestURI is %q", ctx.RequestURI())
+}
 
 func main(){
- fmt.Printf("hello, world!👋 \n")
+  fasthttp.ListenAndServe(":8081", fastHTTPHandler)
 }

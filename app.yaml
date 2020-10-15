@@ -1,4 +1,4 @@
-runtime: go
+runtime: go114
 env: flex
 env_variables:
   GO111MODULE: "on"

@@ -9,5 +9,5 @@ func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 }
 
 func main(){
-  fasthttp.ListenAndServe(":8081", fastHTTPHandler)
+  fasthttp.ListenAndServe(":8080", fastHTTPHandler)
 }

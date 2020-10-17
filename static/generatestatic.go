@@ -17,16 +17,24 @@ func checkErr(e error) {
 }
 
 func generate() {
-	// var out io.Writer
+	err := os.Mkdir("public", 0755)
+	if err != nil {
+		fmt.Println("public folder exists already")
+	} else {
+		fmt.Println("public folder created")
+	}
+	out, err := os.Create("public/index.html")
+	checkErr(err)
 	paths := []string{
 		"templates/index.tmpl",
 	}
-	index := models.Index{Title: "This Is The Title"}
+	index := models.Index{Title: "This Is The Title 👋"}
 	indexTmpl, err := template.New("index.tmpl").ParseFiles(paths...)
 	checkErr(err)
-	err = indexTmpl.Execute(os.Stdout, index)
+	// err = indexTmpl.Execute(os.Stdout, index)
+	err = indexTmpl.Execute(out, index)
 	checkErr(err)
-
+	out.Close()
 	// fmt.Printf("Out file %q", out)
 }
 

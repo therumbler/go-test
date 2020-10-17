@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	log "github.com/rs/zerolog/log"
 	"github.com/valyala/fasthttp"
-	"log"
 )
 
 func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
@@ -20,6 +20,6 @@ func fastHTTPHandler(ctx *fasthttp.RequestCtx) {
 }
 
 func main() {
-	log.Print("listening on http://127.0.0.1:8080")
+	log.Info().Msg("listening on http://127.0.0.1:8080")
 	fasthttp.ListenAndServe(":8080", fastHTTPHandler)
 }
